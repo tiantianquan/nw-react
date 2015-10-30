@@ -1,6 +1,11 @@
+/*
+ node-formidable
+ https://github.com/felixge/node-formidable
+ lib 中require报错,注释掉修复
+ */
+
 var gui = require('nw.gui')
 require('./main.jsx')
-
 
 // global.document = window.document
 // global.navigator = window.navigator
