@@ -1,27 +1,27 @@
 import React from 'react'
-import {Tree} from 'antd'
+import 'antd'
+import Tree from './tree'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
 import FileItem from '../util/folder'
-import sizeof from 'object-sizeof'
 
 let TreeNode = Tree.TreeNode
 
 let rootItem = new FileItem(__dirname)
 
 let TreeNav = React.createClass({
-  handleSelect(e){
-    //console.log( sizeof(rootItem) )
+  handleExpand(e){
     e.node.props.fileItem.getChildren()
     this.setState({fileDir: rootItem})
+
   },
-  handleDataLoaded (e){
-    console.log(e)
+  handleSelect(e){
   },
   mapTreeNode (fileItem) {
     return (
-      <TreeNode fileItem={fileItem} key={fileItem.filePath} title={fileItem.fileName}>
+      <TreeNode fileItem={fileItem} key={fileItem.filePath} isdir={fileItem.fileType === 'dir'}
+                title={fileItem.fileName}>
         {
           fileItem.children.length !== 0 ? fileItem.children.map((item)=> {
             return this.mapTreeNode(item)
@@ -37,7 +37,7 @@ let TreeNav = React.createClass({
     }
   },
   render(){
-    return (<Tree onSelect={this.handleSelect}  onDataLoaded={this.handleDataLoaded} >
+    return (<Tree onSelect={this.handleSelect} onExpand={this.handleExpand} showLine={true}>
       {this.mapTreeNode(this.state.fileDir)}
     </Tree>)
   }

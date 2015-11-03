@@ -29,10 +29,12 @@
     "react-addons-transition-group": "^0.14.0",
     "react-addons-update": "^0.14.0",
     "react-dom": "^0.14.0",
+    "react-redux": "^4.0.0",
     "react-router": "^1.0.0-rc3",
     "react-tap-event-plugin": "^0.2.1",
     "react-tree-menu": "^1.4.4",
-    "react-treeview": "^0.4.2"
+    "react-treeview": "^0.4.2",
+    "redux": "^3.0.4"
   },
   "devDependencies": {
     "babel": "^5.8.29",

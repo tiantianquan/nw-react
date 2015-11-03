@@ -51,7 +51,7 @@ module.exports = {
       loader: 'json-loader'
     }, {
       test: /\.(png|woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      include: [path.resolve(__dirname, 'node_modules/font-awesome/fonts')],
+      include: [path.resolve(__dirname, 'node_modules/font-awesome/fonts'),'./app'],
       loader: 'file-loader',
     }],
   },
