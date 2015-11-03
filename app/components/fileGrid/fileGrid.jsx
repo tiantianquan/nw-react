@@ -25,7 +25,7 @@ let FileGrid = React.createClass({
     return grid
   },
   componentWillReceiveProps(nextProps) {
-    this.setState(getCol(nextProps))
+    this.setState(this.getCol(nextProps))
   },
   getInitialState() {
     return this.getCol(this.props)
@@ -41,7 +41,7 @@ let FileGrid = React.createClass({
             <Row>
               {
                 row.map((col)=> {
-                  return (<Col span={colAver.toString()}>
+                  return col === undefined ? undefined: (<Col span={colAver.toString()}>
                       <FileSymbol fileName={col.fileName}/>
                     </Col>
                   )

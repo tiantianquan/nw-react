@@ -8,15 +8,18 @@ import FileItem from '../util/folder'
 
 let TreeNode = Tree.TreeNode
 
-let rootItem = new FileItem(__dirname)
+//let rootItem = new FileItem(__dirname)
 
 let TreeNav = React.createClass({
+  rootItem: new FileItem(__dirname),
   handleExpand(e){
     e.node.props.fileItem.getChildren()
-    this.setState({fileDir: rootItem})
+    this.setState({fileDir: this.rootItem})
 
   },
   handleSelect(e){
+    let files = e.node.props.fileItem.getChildren()
+    this.props.onSelect(files)
   },
   mapTreeNode (fileItem) {
     return (
@@ -31,13 +34,13 @@ let TreeNav = React.createClass({
     )
   },
   getInitialState(){
-    rootItem.getChildren()
+    this.rootItem.getChildren()
     return {
-      fileDir: rootItem
+      fileDir: this.rootItem
     }
   },
   render(){
-    return (<Tree onSelect={this.handleSelect} onExpand={this.handleExpand} showLine={true}>
+    return (<Tree onSelect={this.handleSelect} onExpand={this.handleExpand} >
       {this.mapTreeNode(this.state.fileDir)}
     </Tree>)
   }

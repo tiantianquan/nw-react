@@ -25,6 +25,7 @@ class FileItem {
       this.children = childNames.map((fileName)=> {
         return new FileItem(path.join(this.filePath, fileName))
       })
+      return this.children
     }
   }
 }

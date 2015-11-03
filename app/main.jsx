@@ -3,36 +3,52 @@ import {render} from 'react-dom'
 import { Router, Route, Link } from 'react-router'
 import {Row,Col} from 'antd'
 
-import{ createStore } from 'redux'
-import{ Provider} from 'react-redux'
+import{ createStore,bindActionCreators } from 'redux'
+import{ Provider,connect } from 'react-redux'
 
 import TreeNav from './components/treeNav.jsx'
 import FileSymbol from './components/fileSymbol/fileSymbol.jsx'
 import FileGrid from './components/fileGrid/fileGrid.jsx'
 
 import  fileReducer  from './reducers'
+import {selectDir} from './actions'
 
 const wrap = document.querySelector('.wrapper')
 
-let store = createStore(fileSys)
+let store = createStore(fileReducer)
 
 let App = React.createClass({
   render() {
+    const {actions,files} = this.props
+    console.log(this.props)
     return ( <Row>
       <Col span="8">
-        <TreeNav />
+        <TreeNav onSelect={actions.selectDir}/>
       </Col>
       <Col span="16">
-        <FileGrid colNum={2} maxCol={24} files={[{fileName:1},{fileName:2}]}/>
+        <FileGrid colNum={4} maxCol={24} files={files}/>
       </Col>
     </Row>)
   }
 })
+function mapStateToProps(state) {
+  return {
+    files: state.files
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({selectDir}, dispatch)
+  }
+}
+
+let ConnectApp = connect(mapStateToProps,mapDispatchToProps)(App)
 
 
 render(
   <Provider store={store}>
-    <App />
+    <ConnectApp />
   </Provider>
   , wrap)
 
