@@ -2,7 +2,7 @@ import React from 'react'
 import {Row,Col,Button} from 'antd'
 import FileSymbolWrapper from '../fileSymbol/fileSymbolWrapper.jsx'
 
-let FileGrid = React.createClass({
+let SelectedGrid = React.createClass({
   getCol(props){
     let files = props.files
     let colNum = props.colNum
@@ -24,14 +24,14 @@ let FileGrid = React.createClass({
     }
     return grid
   },
+  handleDelete(file){
+    this.props.onDelete(file)
+  },
   componentWillReceiveProps(nextProps) {
     this.setState(this.getCol(nextProps))
   },
   getInitialState() {
     return this.getCol(this.props)
-  },
-  handleAdd(file){
-    this.props.onAdd(file)
   },
   render() {
     const {files} = this.props
@@ -46,7 +46,7 @@ let FileGrid = React.createClass({
                 row.map((col)=> {
                   return col === undefined ? undefined : (<Col span={colAver.toString()}>
                       <div>
-                        <FileSymbolWrapper file={col} buttonText="增加" onClick={this.handleAdd}/>
+                        <FileSymbolWrapper file={col} buttonText="删除" onClick={this.handleDelete}/>
                       </div>
                     </Col>
                   )
@@ -55,10 +55,11 @@ let FileGrid = React.createClass({
             </Row>
           )
         })}
+
       </div>
     )
   }
 })
 
 
-export default FileGrid
+export default SelectedGrid

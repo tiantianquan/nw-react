@@ -9,32 +9,37 @@ import{ Provider,connect } from 'react-redux'
 import TreeNav from '../components/treeNav.jsx'
 import FileSymbol from '../components/fileSymbol/fileSymbol.jsx'
 import FileGrid from '../components/fileGrid/fileGrid.jsx'
+import SelectedGrid from '../components/selectedGrid/selectedGrid.jsx'
 
-import {selectDir} from '../actions/actions'
+import actions from '../actions/actions'
 
 
 let App = React.createClass({
   render() {
-    const {actions,files} = this.props
+    const {actions,files,selectedFiles} = this.props
     return ( <Row>
       <Col span="8">
         <TreeNav onSelect={actions.selectDir}/>
       </Col>
-      <Col span="16">
-        <FileGrid colNum={4} maxCol={24} files={files}/>
+      <Col span="12">
+        <FileGrid colNum={4} onAdd={actions.addFile}  maxCol={24} files={files}/>
+      </Col>
+      <Col span="4">
+        <SelectedGrid colNum={1} onDelete={actions.deleteFile} maxCol={24} files={selectedFiles}/>
       </Col>
     </Row>)
   }
 })
 function mapStateToProps(state) {
   return {
-    files: state.files
+    files: state.files,
+    selectedFiles:state.selectedFiles
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({selectDir}, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   }
 }
 
