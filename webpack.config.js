@@ -5,7 +5,7 @@ module.exports = {
   entry: {
     entry: [
       'webpack/hot/dev-server',
-      './app/app.jsx'
+      './app/app.js'
     ]
   },
   target: 'node-webkit',

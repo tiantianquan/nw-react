@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { Select_Dir} from './actions'
+import { Select_Dir} from '../actions/actions'
 
 
 function fileReducer(state = {files: []}, action) {
