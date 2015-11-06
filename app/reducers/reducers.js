@@ -16,11 +16,9 @@ function fileReducer(state = initialState, action) {
         files: action.files
       }
     case Add_File:
-      var list = state.selectedFiles.map((i)=>i)
-      list.push(action.file)
       return {
         ...state,
-        selectedFiles: list
+        selectedFiles: [...state.selectedFiles,action.file]
       }
     case Delete_File:
       var list = state.selectedFiles.map(i=>i)
