@@ -22,7 +22,7 @@ let App = React.createClass({
         <TreeNav onSelect={actions.selectDir}/>
       </Col>
       <Col span="12">
-        <FileGrid colNum={4} onAdd={actions.addFile}  maxCol={24} files={files}/>
+        <FileGrid colNum={4} onAdd={actions.addFileAsync}  maxCol={24} files={files}/>
       </Col>
       <Col span="4">
         <SelectedGrid colNum={1} onDelete={actions.deleteFile} maxCol={24} files={selectedFiles}/>

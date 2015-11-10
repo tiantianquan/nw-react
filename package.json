@@ -25,6 +25,7 @@
     "lodash": "^3.10.1",
     "material-ui": "^0.13.0",
     "pouchdb": "^5.1.0",
+    "pouchdb-find": "^0.6.0",
     "react": "^0.14.1",
     "react-addons-create-fragment": "^0.14.0",
     "react-addons-pure-render-mixin": "^0.14.0",
@@ -36,7 +37,8 @@
     "react-tap-event-plugin": "^0.2.1",
     "react-tree-menu": "^1.4.4",
     "react-treeview": "^0.4.2",
-    "redux": "^3.0.4"
+    "redux": "^3.0.4",
+    "redux-thunk": "^1.0.0"
   },
   "devDependencies": {
     "babel": "^5.8.29",

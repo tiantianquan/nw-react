@@ -26,6 +26,3 @@ if (process.platform === 'darwin') {
 
 // actually assign menu to window
 win.menu = nativeMenuBar
-
-
-

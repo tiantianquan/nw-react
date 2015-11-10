@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { Select_Dir ,Add_File,Delete_File} from '../actions/actions'
+import { Select_Dir ,Add_File,Delete_File,Select_Files} from '../actions/actions'
 // import  {List} from 'immutable'
 import _ from 'lodash'
 
@@ -26,6 +26,12 @@ function fileReducer(state = initialState, action) {
       return {
         ...state,
         selectedFiles: list
+      }
+
+    case Select_Files:
+      return {
+        ...state,
+        selectedFiles:action.files
       }
     default:
       return state
