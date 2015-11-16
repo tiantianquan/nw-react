@@ -7,13 +7,13 @@ let db = new PouchDB('myDB')
 window.db = db
 
 let Biz = {
-  add: (file) => {
+  add(file) {
     return db.put({
       _id: Date.now().toString(),
       file: file
     })
   },
-  all: () => {
+  all() {
     return db.find({
       selector: {
         _id: {}
@@ -21,8 +21,8 @@ let Biz = {
       sort: ['_id']
     })
   },
-  delete: (file) => {
-    return db.get(file.id).then((res)=>{
+  delete(file) {
+    return db.get(file.id).then((res) => {
       db.remove(res)
     })
   }

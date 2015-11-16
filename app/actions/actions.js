@@ -7,35 +7,47 @@ import Biz from '../util/db'
 export const Select_Dir = 'Select_Dir'
 export const Add_File = 'Add_File'
 export const Delete_File = 'Delete_File'
-export const Select_Files = 'Select_Files'
+export const Get_Select_Files = 'Get_Select_Files'
   /*
    * action 创建函数
    */
 
 let actions = {
+  //异步函数
   addFileAsync(file) {
       return dispatch => {
-        return Biz.add(file).then((res) => {
-          dispatch(actions.selectFilesAsync())
-          // dispatch(actions.addFile(file))
+        return Biz.add(file).then(res => {
+          if (res.ok)
+            dispatch(actions.addFile(file))
         })
       }
     },
 
-    selectFilesAsync() {
+    deleteFileAsync(file){
+      return dispatch =>{
+        return Biz.delete(file).then(res=>{
+          if(res.ok)
+            dispatch(actions.deleteFile(file.file))
+        })
+      }
+    },
+
+    getSelectFilesAsync() {
       return dispatch => {
         return Biz.all().then(res => {
-          let files = res.docs.map((doc) => {
+          let files = res.docs.map(doc => {
             return doc.file
           })
-          dispatch(actions.selectFiles(files))
+          dispatch(actions.getSelectFiles(files))
         })
       }
     },
 
-    selectFiles(files) {
+    //----------------------------------------------------
+    //无状态action
+    getSelectFiles(files) {
       return {
-        type: Select_Files,
+        type: Get_Select_Files,
         files
       }
     },

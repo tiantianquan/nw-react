@@ -15,6 +15,9 @@ import actions from '../actions/actions'
 
 
 let App = React.createClass({
+  componentWillMount(){
+    this.props.actions.getSelectFilesAsync()
+  },
   render() {
     const {actions,files,selectedFiles} = this.props
     return ( <Row>
@@ -25,7 +28,7 @@ let App = React.createClass({
         <FileGrid colNum={4} onAdd={actions.addFileAsync}  maxCol={24} files={files}/>
       </Col>
       <Col span="4">
-        <SelectedGrid colNum={1} onDelete={actions.deleteFile} maxCol={24} files={selectedFiles}/>
+        <SelectedGrid colNum={1} onDelete={actions.deleteFileAsync} maxCol={24} files={selectedFiles}/>
       </Col>
     </Row>)
   }
