@@ -25,7 +25,7 @@ let Biz = {
     return db.get(file.id).then((res) => {
       db.remove(res)
     })
-  }
+  },
 }
 
 export default Biz
