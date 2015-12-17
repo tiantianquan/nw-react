@@ -4,7 +4,7 @@
   "description": "",
   "main": "http://localhost:8080",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-core/register",
     "start": "webpack-dev-server -h --inline --colors --host 127.0.0.1 --port 8080"
   },
   "window": {

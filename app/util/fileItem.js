@@ -33,7 +33,7 @@ export default class FileItem {
       let childNames = fs.readdirSync(this.filePath)
       this.children = childNames.map((fileName)=> {
         let fi = new FileItem(path.join(this.filePath, fileName))
-        return fi.isImg()|| fi.isDir()? fi,undefined
+        return fi.isImg()|| fi.isDir()? fi:undefined
       })
       _.pull(this.children,undefined)
       return this.children
