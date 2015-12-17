@@ -4,7 +4,7 @@ import Tree from './tree'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
-import FileItem from '../util/folder'
+import FileItem from '../util/fileItem'
 
 let TreeNode = Tree.TreeNode
 

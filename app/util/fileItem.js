@@ -21,7 +21,8 @@ export default class FileItem {
   }
 
   isImg(){
-    return FileItem.imgExts.find(ext=>ext===this.fileExt) !== undefined
+    // return FileItem.imgExts.find(ext=>ext===this.fileExt) !== undefined
+    return _.find(FileItem.imgExts,this.fileExt)
   }
   isDir(){
     return this.fileType === 'dir'
